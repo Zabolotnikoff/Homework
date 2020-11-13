@@ -27,15 +27,22 @@ class ContactListAdapter: RecyclerView.Adapter<ContactListAdapter.ViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(contactList[position])
+        holder.bind(position, contactList[position])
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder (itemView) {
 
-        val title: TextView = itemView.findViewById(R.id.itemTitle)
+        val contactHeader: TextView = itemView.findViewById(R.id.viewHeader)
+        val contactId: TextView = itemView.findViewById(R.id.viewID)
+        val contactName: TextView = itemView.findViewById(R.id.viewName)
+        val contactPhone: TextView = itemView.findViewById(R.id.viewPhone)
 
-        fun bind (item: Contact) {
-            title.text = item.name
+        fun bind (number: Int, item: Contact) {
+
+            contactHeader.text = "Контакт №${number + 1}"
+            contactId.text = item.id
+            contactName.text = item.name
+            contactPhone.text = item.phone
         }
     }
 }

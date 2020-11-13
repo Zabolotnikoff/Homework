@@ -29,7 +29,7 @@ class MyService: Service() {
     }
 
     private fun printIterationNumber() {
-        Toast.makeText(this, "Итерация номер: ${iterationCounter++}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Итерация номер: ${++iterationCounter}", Toast.LENGTH_SHORT).show()
         myHandler.postDelayed(myRunnable, 3000)
     }
 }

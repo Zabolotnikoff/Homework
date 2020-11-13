@@ -24,16 +24,12 @@ class MainActivity : AppCompatActivity() {
 
         button_Contact_List.setOnClickListener {
             startActivity(Intent( this, ContactListActivity::class.java))
-
         }
-
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-
-        println("onBackPressed")
-        this.finishAffinity()
+        finishAffinity()
     }
 
 
