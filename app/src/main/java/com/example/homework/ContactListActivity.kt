@@ -3,22 +3,30 @@ package com.example.homework
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_contact_list.*
 
 class ContactListActivity : AppCompatActivity() {
 
-    private val contactList = arrayListOf<Contact>()
+    private val contactList = mutableListOf<Contact>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact_list)
 
-    //?????????????????????
+         val adapter = ContactListAdapter()
+
+        reciclerView.adapter = adapter
+        reciclerView.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+
+        getContactList()
+        adapter.setContactList(contactList)
 
     }
 
     fun getContactList() {
 
-        val cursor =  this.application?.contentResolver?.query(
+        val cursor = this.contentResolver.query(
             ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
             null,
             null,

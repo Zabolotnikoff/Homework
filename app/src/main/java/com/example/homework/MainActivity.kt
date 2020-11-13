@@ -21,6 +21,12 @@ class MainActivity : AppCompatActivity() {
         button_Stop_MyService.setOnClickListener {
             stopService(Intent(this, MyService::class.java))
         }
+
+        button_Contact_List.setOnClickListener {
+            startActivity(Intent( this, ContactListActivity::class.java))
+
+        }
+
     }
 
     override fun onBackPressed() {
